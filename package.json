@@ -1,0 +1,85 @@
+{
+  "title": "Solidity Toolkit",
+  "name": "solidity-toolkit",
+  "version": "1.0.0",
+  "description": "A toolkit for Solidity Smart Contracts development.",
+  "private": true,
+  "files": [
+    "contracts",
+    "test"
+  ],
+  "keywords": [
+    "solidity",
+    "web3"
+  ],
+  "scripts": {
+    "dev": "lite-server",
+    "truffle:console": "truffle develop",
+    "truffle:compile": "scripts/compile.sh",
+    "truffle:test": "npm run truffle:compile && scripts/test.sh",
+    "hardhat:console": "hardhat console",
+    "hardhat:compile": "hardhat compile",
+    "hardhat:test": "hardhat test",
+    "hardhat:coverage": "env COVERAGE=true hardhat coverage",
+    "test": "npm run hardhat:test",
+    "coverage": "scripts/coverage.sh",
+    "clean": "rm -rf coverage",
+    "profile": "npm run clean && npm run coverage && open coverage/index.html",
+    "lint": "npm run lint:js && npm run lint:sol",
+    "lint:fix": "npm run lint:js:fix && npm run lint:sol:fix",
+    "lint:js": "eslint --ignore-path .gitignore .",
+    "lint:js:fix": "eslint --ignore-path .gitignore . --fix",
+    "lint:sol": "solhint 'contracts/**/*.sol' && prettier -c 'contracts/**/*.sol'",
+    "lint:sol:fix": "prettier --write \"contracts/**/*.sol\"",
+    "flat": "scripts/flat.sh",
+    "analyze": "scripts/analyze.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noncept/solidity-toolkit.git"
+  },
+  "homepage": "https://github.com/noncept/solidity-toolkit/",
+  "bugs": {
+    "url": "https://github.com/noncept/solidity-toolkit/issues"
+  },
+  "author": "NONCEPT (https://noncept.com)",
+  "contributors": [
+    {
+      "name": "Vittorio Minacori",
+      "url": "https://github.com/vittominacori"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ganache": "^2.0.1",
+    "@nomiclabs/hardhat-truffle5": "^2.0.7",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@openzeppelin/test-helpers": "^0.5.16",
+    "chai": "4.3.4",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-mocha-no-only": "^1.1.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "eth-sig-util": "^3.0.1",
+    "ethereumjs-wallet": "^1.0.2",
+    "ganache-cli": "^6.12.2",
+    "hardhat": "^2.12.0",
+    "lite-server": "^2.6.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.24",
+    "sol2uml": "^2.2.4",
+    "solhint": "^3.3.7",
+    "solhint-plugin-prettier": "^0.0.5",
+    "solidity-coverage": "^0.8.2",
+    "surya": "^0.4.6",
+    "truffle": "^5.6.1",
+    "truffle-flattener": "fedeb95/truffle-flattener"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "4.7.3",
+    "eth-token-recover": "4.7.3"
+  }
+}
