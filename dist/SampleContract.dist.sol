@@ -117,7 +117,6 @@ abstract contract Context {
 
 pragma solidity ^0.8.0;
 
-
 /**
  * @dev Contract module which provides a basic access control mechanism, where
  * there is an account (an owner) that can be granted exclusive access to
@@ -202,7 +201,6 @@ abstract contract Ownable is Context {
 pragma solidity ^0.8.0;
 
 
-
 /**
  * @title TokenRecover
  * @author Vittorio Minacori (https://github.com/vittominacori)
@@ -224,7 +222,6 @@ contract TokenRecover is Ownable {
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
-
 
 contract SampleContract is TokenRecover {
     event WorkDone(uint256 value);
