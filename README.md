@@ -16,27 +16,7 @@ A toolkit for Solidity Smart Contracts development.
 npm install
 ```
 
-## Usage (using Truffle)
-
-Open the Truffle console
-
-```bash
-npm run truffle:console
-```
-
-### Compile
-
-```bash
-npm run truffle:compile
-```
-
-### Test
-
-```bash
-npm run truffle:test
-```
-
-## Usage (using Hardhat)
+## Usage
 
 Open the Hardhat console
 
@@ -57,8 +37,6 @@ npm run hardhat:test
 ```
 
 ### Code Coverage
-
-It uses Hardhat
 
 ```bash
 npm run coverage

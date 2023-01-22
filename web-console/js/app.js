@@ -5,7 +5,7 @@ const App = {
   web3: null,
   web3Provider: null,
   artifacts: [],
-  promisify (fn, ...args) {
+  promisify(fn, ...args) {
     return new Promise((resolve, reject) => {
       fn(...args, (err, res) => {
         if (err) {
@@ -33,33 +33,31 @@ const App = {
   },
   initContract: function (contractName) {
     fetch(`${contractName}.json`)
-      .then((response) => response.json())
-      .then((contract) => {
+      .then(response => response.json())
+      .then(contract => {
         this.artifacts[contractName] = contract;
       })
       .catch(error => console.log(error));
   },
   getContract: function (contractName, address) {
-    return new this.web3.eth.Contract(
-      this.artifacts[contractName].abi,
-      address,
-    );
+    return new this.web3.eth.Contract(this.artifacts[contractName].abi, address);
   },
   deployContract: function (contractName, args, opts) {
     const contract = new this.web3.eth.Contract(this.artifacts[contractName].abi);
 
-    contract.deploy({
-      data: this.artifacts[contractName].bytecode,
-      arguments: args,
-    })
+    contract
+      .deploy({
+        data: this.artifacts[contractName].bytecode,
+        arguments: args,
+      })
       .send(opts || { from: this.coinbase })
-      .on('error', (error) => {
+      .on('error', error => {
         console.log(error.message);
       })
-      .on('transactionHash', (transactionHash) => {
+      .on('transactionHash', transactionHash => {
         console.log(transactionHash);
       })
-      .on('receipt', (receipt) => {
+      .on('receipt', receipt => {
         console.log(receipt);
       });
   },

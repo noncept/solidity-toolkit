@@ -37,6 +37,9 @@ npm-debug.log
 # truffle build directory
 /build
 
+# hardat-exposed
+contracts-exposed
+
 # Hardhat files
 /artifacts
 /cache

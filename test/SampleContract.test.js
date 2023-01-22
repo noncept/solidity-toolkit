@@ -1,4 +1,5 @@
 const { BN, expectEvent, expectRevert } = require('@openzeppelin/test-helpers');
+const { expect } = require('chai');
 
 const { shouldBehaveLikeTokenRecover } = require('eth-token-recover/test/TokenRecover.behaviour');
 
@@ -13,12 +14,12 @@ contract('SampleContract', function ([creator, newOwner, anotherAccount]) {
 
   it('message sender should be contract creator', async function () {
     const contractCreator = await this.contract.creator();
-    creator.should.equal(contractCreator);
+    expect(creator).to.equal(contractCreator);
   });
 
   it('message sender should be contract owner', async function () {
     const contractOwner = await this.contract.owner();
-    creator.should.equal(contractOwner);
+    expect(creator).to.equal(contractOwner);
   });
 
   context('calling the creatorDoesWork function', function () {

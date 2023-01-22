@@ -1,6 +1,5 @@
-require('chai/register-should');
-require('@nomiclabs/hardhat-ganache');
 require('@nomiclabs/hardhat-truffle5');
+require('hardhat-exposed');
 require('solidity-coverage');
 
 module.exports = {
@@ -13,5 +12,8 @@ module.exports = {
         runs: 200,
       },
     },
+  },
+  exposed: {
+    exclude: [],
   },
 };
