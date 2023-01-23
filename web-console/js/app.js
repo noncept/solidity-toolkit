@@ -5,7 +5,7 @@ const App = {
   web3: null,
   web3Provider: null,
   artifacts: [],
-  promisify(fn, ...args) {
+  promisify (fn, ...args) {
     return new Promise((resolve, reject) => {
       fn(...args, (err, res) => {
         if (err) {
