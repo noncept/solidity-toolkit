@@ -33,11 +33,11 @@ const App = {
   },
   initContract: function (contractName) {
     fetch(`${contractName}.json`)
-      .then(response => response.json())
-      .then(contract => {
+      .then((response) => response.json())
+      .then((contract) => {
         this.artifacts[contractName] = contract;
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   },
   getContract: function (contractName, address) {
     return new this.web3.eth.Contract(this.artifacts[contractName].abi, address);
@@ -51,13 +51,13 @@ const App = {
         arguments: args,
       })
       .send(opts || { from: this.coinbase })
-      .on('error', error => {
+      .on('error', (error) => {
         console.log(error.message);
       })
-      .on('transactionHash', transactionHash => {
+      .on('transactionHash', (transactionHash) => {
         console.log(transactionHash);
       })
-      .on('receipt', receipt => {
+      .on('receipt', (receipt) => {
         console.log(receipt);
       });
   },

@@ -28,7 +28,7 @@ contract('SampleContract', function ([creator, newOwner, anotherAccount]) {
         const receipt = await this.contract.creatorDoesWork(value, { from: creator });
 
         await expectEvent.inTransaction(receipt.tx, SampleContract, 'WorkDone', {
-          value: value,
+          value,
         });
       });
     });
@@ -53,7 +53,7 @@ contract('SampleContract', function ([creator, newOwner, anotherAccount]) {
         const receipt = await this.contract.ownerDoesWork(value, { from: newOwner });
 
         await expectEvent.inTransaction(receipt.tx, SampleContract, 'WorkDone', {
-          value: value,
+          value,
         });
       });
     });
@@ -74,7 +74,7 @@ contract('SampleContract', function ([creator, newOwner, anotherAccount]) {
         const receipt = await this.contract.$_internalWork(value, { from: creator });
 
         await expectEvent.inTransaction(receipt.tx, SampleContract, 'WorkDone', {
-          value: value,
+          value,
         });
       });
     });
