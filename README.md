@@ -16,24 +16,24 @@ A toolkit for Solidity Smart Contracts development.
 npm install
 ```
 
-## Usage
+## Usage (using Hardhat)
 
-Open the Hardhat console
+Open the console
 
 ```bash
-npm run hardhat:console
+npm run console
 ```
 
 ### Compile
 
 ```bash
-npm run hardhat:compile
+npm run compile
 ```
 
 ### Test
 
 ```bash
-npm run hardhat:test
+npm test
 ```
 
 ### Code Coverage
