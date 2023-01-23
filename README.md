@@ -44,19 +44,19 @@ npm run coverage
 
 ## Linter
 
-Use Solhint
+Check Solidity files
 
 ```bash
 npm run lint:sol
 ```
 
-Use ESLint
+Check JS/TS files
 
 ```bash
 npm run lint:js
 ```
 
-Use Prettier and fix .js and .sol
+Fix JS and Solidity files
 
 ```bash
 npm run lint:fix
@@ -66,7 +66,7 @@ npm run lint:fix
 
 By default, it takes contracts compiled with Truffle.
 
-To use Hardhat compiled contracts change `./build/contracts` with `./artifacts` in `bs-config.json`
+To use Hardhat compiled contracts adjust `./build/contracts` with `./artifacts` files in `bs-config.json`
 
 ```bash
 npm run dev

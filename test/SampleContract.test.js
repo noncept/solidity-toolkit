@@ -3,7 +3,7 @@ const { expect } = require('chai');
 
 const { shouldBehaveLikeTokenRecover } = require('eth-token-recover/test/TokenRecover.behaviour');
 
-const SampleContract = artifacts.require('SampleContract');
+const SampleContract = artifacts.require('$SampleContract');
 
 contract('SampleContract', function ([creator, newOwner, anotherAccount]) {
   const value = new BN(1000);
@@ -64,6 +64,18 @@ contract('SampleContract', function ([creator, newOwner, anotherAccount]) {
           this.contract.ownerDoesWork(value, { from: anotherAccount }),
           'Ownable: caller is not the owner',
         );
+      });
+    });
+  });
+
+  context('testing internal methods', function () {
+    describe('calling _internalWork', function () {
+      it('emits a WorkDone event', async function () {
+        const receipt = await this.contract.$_internalWork(value, { from: creator });
+
+        await expectEvent.inTransaction(receipt.tx, SampleContract, 'WorkDone', {
+          value: value,
+        });
       });
     });
   });
