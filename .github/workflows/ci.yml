@@ -12,16 +12,8 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Code
-        uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-
-      - name: Install dependencies
-        run: npm install
+      - name: Setup Environment
+        uses: ./.github/actions/setup
 
       - name: Linter
         run: npm run lint
@@ -30,16 +22,8 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Code
-        uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-
-      - name: Install dependencies
-        run: npm install
+      - name: Setup Environment
+        uses: ./.github/actions/setup
 
       - name: Test
         run: npm test
@@ -48,21 +32,11 @@ jobs:
     name: Coverage
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Code
-        uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-
-      - name: Install dependencies
-        run: npm install
-
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+        
       - name: Coverage
         run: npm run coverage
         
-      - name: Post to Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Post to Codecov
+        uses: codecov/codecov-action@v3
