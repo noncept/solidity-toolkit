@@ -50,8 +50,5 @@ contracts-exposed
 # truffle
 .node-xmlhttprequest-*
 
-# npm package
-package-lock.json
-
 # IntelliJ IDE
 .idea
