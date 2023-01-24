@@ -248,4 +248,8 @@ contract SampleContract is TokenRecover {
     function ownerDoesWork(uint256 value) public onlyOwner {
         emit WorkDone(value);
     }
+
+    function _internalWork(uint256 value) internal {
+        emit WorkDone(value);
+    }
 }

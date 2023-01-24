@@ -5,7 +5,7 @@
 
 |  File Name  |  SHA-1 Hash  |
 |-------------|--------------|
-| dist/SampleContract.dist.sol | 8843ace820f019e22c98636637a6bcd691486b53 |
+| dist/SampleContract.dist.sol | bb05a55c5010fa1ea1ca8a64494775b5ba3d7b78 |
 
 
 ### Contracts Description Table
@@ -43,6 +43,7 @@
 | └ | creator | Public ❗️ |   |NO❗️ |
 | └ | creatorDoesWork | Public ❗️ | 🛑  | onlyCreator |
 | └ | ownerDoesWork | Public ❗️ | 🛑  | onlyOwner |
+| └ | _internalWork | Internal 🔒 | 🛑  | |
 
 
 ### Legend
