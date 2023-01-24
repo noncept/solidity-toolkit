@@ -1,7 +1,9 @@
 name: CI
 
 on:
-  push: {}
+  push:
+    branches:
+      - master
   pull_request: {}
   release:
     types:
@@ -18,11 +20,11 @@ jobs:
       - name: Setup Environment
         uses: ./.github/actions/setup
 
-      - name: Linter
+      - name: Run Linter
         run: npm run lint
 
   test:
-    name: Test
+    name: Run Test
     runs-on: ubuntu-latest
     steps:
       - name: Setup Code
@@ -44,7 +46,7 @@ jobs:
       - name: Setup Environment
         uses: ./.github/actions/setup
         
-      - name: Coverage
+      - name: Run Coverage
         run: npm run coverage
         
       - name: Post to Codecov
