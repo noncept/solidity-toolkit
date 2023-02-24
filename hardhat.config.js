@@ -1,11 +1,12 @@
 require('@nomiclabs/hardhat-truffle5');
-require('hardhat-exposed');
 require('solidity-coverage');
+require('solidity-docgen');
+require('hardhat-exposed');
 
 module.exports = {
   defaultNetwork: 'hardhat',
   solidity: {
-    version: '0.8.17',
+    version: '0.8.19',
     settings: {
       optimizer: {
         enabled: true,
@@ -15,5 +16,11 @@ module.exports = {
   },
   exposed: {
     exclude: [],
+  },
+  docgen: {
+    outputDir: 'analysis/docs',
+    exclude: [
+      'mocks',
+    ],
   },
 };

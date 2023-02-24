@@ -62,6 +62,12 @@ Fix JS and Solidity files
 npm run lint:fix
 ```
 
+## Create Documentation
+
+```bash
+npm run docs
+```
+
 ## Use web3 console in your browser (i.e. to use MetaMask)
 
 By default, it takes contracts compiled with Truffle.
