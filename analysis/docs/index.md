@@ -2,7 +2,7 @@
 
 ## SampleContract
 
-_Implementation of Sample Contract_
+_Implementation of a Sample Contract_
 
 ### WorkDone
 
