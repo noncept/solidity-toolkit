@@ -58,13 +58,13 @@
     "@nomiclabs/hardhat-web3": "^2.0.0",
     "@openzeppelin/test-helpers": "^0.5.16",
     "chai": "^4.3.7",
-    "eslint": "^8.41.0",
-    "eslint-config-standard": "^17.0.0",
+    "eslint": "^8.42.0",
+    "eslint-config-standard": "^17.1.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-mocha-no-only": "^1.1.1",
     "eth-sig-util": "^3.0.1",
     "ethereumjs-wallet": "^1.0.2",
-    "hardhat": "^2.14.0",
+    "hardhat": "^2.14.1",
     "hardhat-exposed": "^0.3.6",
     "lite-server": "^2.6.1",
     "prettier": "^2.8.8",
@@ -75,10 +75,10 @@
     "solidity-coverage": "^0.8.2",
     "solidity-docgen": "^0.6.0-beta.35",
     "surya": "^0.4.6",
-    "truffle": "^5.9.1"
+    "truffle": "^5.9.4"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "4.9.0",
-    "eth-token-recover": "4.9.0"
+    "@openzeppelin/contracts": "4.9.1",
+    "eth-token-recover": "4.9.1"
   }
 }
