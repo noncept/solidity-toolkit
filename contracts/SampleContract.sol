@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import "eth-token-recover/contracts/TokenRecover.sol";
+import {TokenRecover} from "eth-token-recover/contracts/TokenRecover.sol";
 
 /**
  * @title SampleContract

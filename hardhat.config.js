@@ -19,8 +19,6 @@ module.exports = {
   },
   docgen: {
     outputDir: 'analysis/docs',
-    exclude: [
-      'mocks',
-    ],
+    exclude: ['mocks'],
   },
 };
