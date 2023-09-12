@@ -6,8 +6,9 @@ require('hardhat-exposed');
 module.exports = {
   defaultNetwork: 'hardhat',
   solidity: {
-    version: '0.8.20',
+    version: '0.8.21',
     settings: {
+      evmVersion: 'shanghai',
       optimizer: {
         enabled: true,
         runs: 200,
