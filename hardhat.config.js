@@ -2,6 +2,7 @@ require('@nomiclabs/hardhat-truffle5');
 require('solidity-coverage');
 require('solidity-docgen');
 require('hardhat-exposed');
+require('hardhat-gas-reporter');
 
 module.exports = {
   defaultNetwork: 'hardhat',
@@ -17,6 +18,11 @@ module.exports = {
   },
   exposed: {
     exclude: [],
+  },
+  gasReporter: {
+    enabled: true,
+    excludeContracts: ['mocks'],
+    showMethodSig: true,
   },
   docgen: {
     outputDir: 'analysis/docs',
