@@ -5,7 +5,7 @@
 
 |  File Name  |  SHA-1 Hash  |
 |-------------|--------------|
-| dist/SampleContract.dist.sol | c88196cc6ef57a899afe1978c466e0ae145cb443 |
+| dist/SampleContract.dist.sol | 762276e7c1046b3e4f62ca0a6d8eb4414da3a52d |
 
 
 ### Contracts Description Table
@@ -14,14 +14,6 @@
 |  Contract  |         Type        |       Bases      |                  |                 |
 |:----------:|:-------------------:|:----------------:|:----------------:|:---------------:|
 |     └      |  **Function Name**  |  **Visibility**  |  **Mutability**  |  **Modifiers**  |
-||||||
-| **IERC20** | Interface |  |||
-| └ | totalSupply | External ❗️ |   |NO❗️ |
-| └ | balanceOf | External ❗️ |   |NO❗️ |
-| └ | transfer | External ❗️ | 🛑  |NO❗️ |
-| └ | allowance | External ❗️ |   |NO❗️ |
-| └ | approve | External ❗️ | 🛑  |NO❗️ |
-| └ | transferFrom | External ❗️ | 🛑  |NO❗️ |
 ||||||
 | **Context** | Implementation |  |||
 | └ | _msgSender | Internal 🔒 |   | |
@@ -34,6 +26,14 @@
 | └ | renounceOwnership | Public ❗️ | 🛑  | onlyOwner |
 | └ | transferOwnership | Public ❗️ | 🛑  | onlyOwner |
 | └ | _transferOwnership | Internal 🔒 | 🛑  | |
+||||||
+| **IERC20** | Interface |  |||
+| └ | totalSupply | External ❗️ |   |NO❗️ |
+| └ | balanceOf | External ❗️ |   |NO❗️ |
+| └ | transfer | External ❗️ | 🛑  |NO❗️ |
+| └ | allowance | External ❗️ |   |NO❗️ |
+| └ | approve | External ❗️ | 🛑  |NO❗️ |
+| └ | transferFrom | External ❗️ | 🛑  |NO❗️ |
 ||||||
 | **TokenRecover** | Implementation | Ownable |||
 | └ | recoverERC20 | Public ❗️ | 🛑  | onlyOwner |

@@ -60,3 +60,20 @@ jobs:
         
       - name: Post to Codecov
         uses: codecov/codecov-action@v3
+
+  slither:
+    name: Slither
+    runs-on: ubuntu-latest
+    env:
+      FORCE_COLOR: 1
+    steps:
+      - name: Setup Code
+        uses: actions/checkout@v4
+
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+
+      - name: Run Slither
+        uses: crytic/slither-action@v0.3.0
+        with:
+          node-version: 18

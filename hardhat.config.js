@@ -21,7 +21,7 @@ module.exports = {
   },
   gasReporter: {
     enabled: true,
-    excludeContracts: ['mocks'],
+    excludeContracts: ['mocks', '@openzeppelin/contracts'],
     showMethodSig: true,
   },
   docgen: {
