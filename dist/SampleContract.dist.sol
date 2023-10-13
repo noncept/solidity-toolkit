@@ -1,13 +1,13 @@
-// Sources flattened with hardhat v2.17.4 https://hardhat.org
+// Sources flattened with hardhat v2.18.1 https://hardhat.org
 
 // SPDX-License-Identifier: MIT
 
-// File @openzeppelin/contracts/utils/Context.sol@v4.9.3
+// File @openzeppelin/contracts/utils/Context.sol@v5.0.0
 
 // Original license: SPDX_License_Identifier: MIT
-// OpenZeppelin Contracts v4.4.1 (utils/Context.sol)
+// OpenZeppelin Contracts (last updated v5.0.0) (utils/Context.sol)
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 /**
  * @dev Provides information about the current execution context, including the
@@ -30,20 +30,20 @@ abstract contract Context {
 }
 
 
-// File @openzeppelin/contracts/access/Ownable.sol@v4.9.3
+// File @openzeppelin/contracts/access/Ownable.sol@v5.0.0
 
 // Original license: SPDX_License_Identifier: MIT
-// OpenZeppelin Contracts (last updated v4.9.0) (access/Ownable.sol)
+// OpenZeppelin Contracts (last updated v5.0.0) (access/Ownable.sol)
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 /**
  * @dev Contract module which provides a basic access control mechanism, where
  * there is an account (an owner) that can be granted exclusive access to
  * specific functions.
  *
- * By default, the owner account will be the one that deploys the contract. This
- * can later be changed with {transferOwnership}.
+ * The initial owner is set to the address provided by the deployer. This can
+ * later be changed with {transferOwnership}.
  *
  * This module is used through inheritance. It will make available the modifier
  * `onlyOwner`, which can be applied to your functions to restrict their use to
@@ -52,13 +52,26 @@ pragma solidity ^0.8.0;
 abstract contract Ownable is Context {
     address private _owner;
 
+    /**
+     * @dev The caller account is not authorized to perform an operation.
+     */
+    error OwnableUnauthorizedAccount(address account);
+
+    /**
+     * @dev The owner is not a valid owner account. (eg. `address(0)`)
+     */
+    error OwnableInvalidOwner(address owner);
+
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
     /**
-     * @dev Initializes the contract setting the deployer as the initial owner.
+     * @dev Initializes the contract setting the address provided by the deployer as the initial owner.
      */
-    constructor() {
-        _transferOwnership(_msgSender());
+    constructor(address initialOwner) {
+        if (initialOwner == address(0)) {
+            revert OwnableInvalidOwner(address(0));
+        }
+        _transferOwnership(initialOwner);
     }
 
     /**
@@ -80,7 +93,9 @@ abstract contract Ownable is Context {
      * @dev Throws if the sender is not the owner.
      */
     function _checkOwner() internal view virtual {
-        require(owner() == _msgSender(), "Ownable: caller is not the owner");
+        if (owner() != _msgSender()) {
+            revert OwnableUnauthorizedAccount(_msgSender());
+        }
     }
 
     /**
@@ -99,7 +114,9 @@ abstract contract Ownable is Context {
      * Can only be called by the current owner.
      */
     function transferOwnership(address newOwner) public virtual onlyOwner {
-        require(newOwner != address(0), "Ownable: new owner is the zero address");
+        if (newOwner == address(0)) {
+            revert OwnableInvalidOwner(address(0));
+        }
         _transferOwnership(newOwner);
     }
 
@@ -115,12 +132,12 @@ abstract contract Ownable is Context {
 }
 
 
-// File @openzeppelin/contracts/token/ERC20/IERC20.sol@v4.9.3
+// File @openzeppelin/contracts/token/ERC20/IERC20.sol@v5.0.0
 
 // Original license: SPDX_License_Identifier: MIT
-// OpenZeppelin Contracts (last updated v4.9.0) (token/ERC20/IERC20.sol)
+// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/IERC20.sol)
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
@@ -141,23 +158,23 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 
     /**
-     * @dev Returns the amount of tokens in existence.
+     * @dev Returns the value of tokens in existence.
      */
     function totalSupply() external view returns (uint256);
 
     /**
-     * @dev Returns the amount of tokens owned by `account`.
+     * @dev Returns the value of tokens owned by `account`.
      */
     function balanceOf(address account) external view returns (uint256);
 
     /**
-     * @dev Moves `amount` tokens from the caller's account to `to`.
+     * @dev Moves a `value` amount of tokens from the caller's account to `to`.
      *
      * Returns a boolean value indicating whether the operation succeeded.
      *
      * Emits a {Transfer} event.
      */
-    function transfer(address to, uint256 amount) external returns (bool);
+    function transfer(address to, uint256 value) external returns (bool);
 
     /**
      * @dev Returns the remaining number of tokens that `spender` will be
@@ -169,7 +186,8 @@ interface IERC20 {
     function allowance(address owner, address spender) external view returns (uint256);
 
     /**
-     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
+     * @dev Sets a `value` amount of tokens as the allowance of `spender` over the
+     * caller's tokens.
      *
      * Returns a boolean value indicating whether the operation succeeded.
      *
@@ -182,36 +200,40 @@ interface IERC20 {
      *
      * Emits an {Approval} event.
      */
-    function approve(address spender, uint256 amount) external returns (bool);
+    function approve(address spender, uint256 value) external returns (bool);
 
     /**
-     * @dev Moves `amount` tokens from `from` to `to` using the
-     * allowance mechanism. `amount` is then deducted from the caller's
+     * @dev Moves a `value` amount of tokens from `from` to `to` using the
+     * allowance mechanism. `value` is then deducted from the caller's
      * allowance.
      *
      * Returns a boolean value indicating whether the operation succeeded.
      *
      * Emits a {Transfer} event.
      */
-    function transferFrom(address from, address to, uint256 amount) external returns (bool);
+    function transferFrom(address from, address to, uint256 value) external returns (bool);
 }
 
 
-// File eth-token-recover/contracts/TokenRecover.sol@v4.9.5
+// File eth-token-recover/contracts/TokenRecover.sol@v5.0.0
 
 // Original license: SPDX_License_Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 
 /**
  * @title TokenRecover
  * @dev Allows token owner to recover any ERC20 sent into the contract.
  */
-contract TokenRecover is Ownable {
+abstract contract TokenRecover is Ownable {
+    /**
+     * @dev Initializes the contract setting the address provided by the deployer as the initial owner.
+     */
+    constructor(address originalOwner) Ownable(originalOwner) {}
+
     /**
      * @dev Recover ERC20 tokens stuck into this contract and send to owner address.
-     * NOTE: Remember that only owner can call so be careful when use on contracts generated from other contracts.
      * @param tokenAddress The token contract address to recover.
      * @param tokenAmount Number of tokens to be recovered.
      */
@@ -226,7 +248,7 @@ contract TokenRecover is Ownable {
 
 // Original license: SPDX_License_Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 /**
  * @title SampleContract
@@ -234,28 +256,40 @@ pragma solidity ^0.8.0;
  * @author Vittorio Minacori
  */
 contract SampleContract is TokenRecover {
-    event WorkDone(uint256 value);
-
     address private _creator;
+
+    /**
+     * @dev The caller account is not authorized to perform an operation.
+     * @param account The caller account.
+     */
+    error SampleContractUnauthorizedAccount(address account);
+
+    /**
+     * @dev Emitted after a work done.
+     * @param value An amount to be emitted.
+     */
+    event WorkDone(uint256 value);
 
     /**
      * @dev Requires that sender is the contract creator.
      */
     modifier onlyCreator() {
-        require(_msgSender() == _creator, "SampleContract: Caller is not the creator");
+        if (creator() != _msgSender()) {
+            revert SampleContractUnauthorizedAccount(_msgSender());
+        }
         _;
     }
 
     /**
-     * @dev Create a new contract assigning `creator` to `owner`.
+     * @dev Create a new contract assigning `_creator` to deployer.
      */
-    constructor() {
-        _creator = owner();
+    constructor() TokenRecover(_msgSender()) {
+        _creator = _msgSender();
     }
 
     /**
      * @dev Return the contract creator.
-     * @return An address indicating the creator
+     * @return An address indicating the creator.
      */
     function creator() public view returns (address) {
         return _creator;

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {TokenRecover} from "eth-token-recover/contracts/TokenRecover.sol";
 
@@ -10,28 +10,40 @@ import {TokenRecover} from "eth-token-recover/contracts/TokenRecover.sol";
  * @author Vittorio Minacori
  */
 contract SampleContract is TokenRecover {
-    event WorkDone(uint256 value);
-
     address private _creator;
+
+    /**
+     * @dev The caller account is not authorized to perform an operation.
+     * @param account The caller account.
+     */
+    error SampleContractUnauthorizedAccount(address account);
+
+    /**
+     * @dev Emitted after a work done.
+     * @param value An amount to be emitted.
+     */
+    event WorkDone(uint256 value);
 
     /**
      * @dev Requires that sender is the contract creator.
      */
     modifier onlyCreator() {
-        require(_msgSender() == _creator, "SampleContract: Caller is not the creator");
+        if (creator() != _msgSender()) {
+            revert SampleContractUnauthorizedAccount(_msgSender());
+        }
         _;
     }
 
     /**
-     * @dev Create a new contract assigning `creator` to `owner`.
+     * @dev Create a new contract assigning `_creator` to deployer.
      */
-    constructor() {
-        _creator = owner();
+    constructor() TokenRecover(_msgSender()) {
+        _creator = _msgSender();
     }
 
     /**
      * @dev Return the contract creator.
-     * @return An address indicating the creator
+     * @return An address indicating the creator.
      */
     function creator() public view returns (address) {
         return _creator;

@@ -4,11 +4,33 @@
 
 _Implementation of a Sample Contract_
 
+### SampleContractUnauthorizedAccount
+
+```solidity
+error SampleContractUnauthorizedAccount(address account)
+```
+
+_The caller account is not authorized to perform an operation._
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| account | address | The caller account. |
+
 ### WorkDone
 
 ```solidity
 event WorkDone(uint256 value)
 ```
+
+_Emitted after a work done._
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| value | uint256 | An amount to be emitted. |
 
 ### onlyCreator
 
@@ -24,7 +46,7 @@ _Requires that sender is the contract creator._
 constructor() public
 ```
 
-_Create a new contract assigning `creator` to `owner`._
+_Create a new contract assigning `_creator` to deployer._
 
 ### creator
 
@@ -38,7 +60,7 @@ _Return the contract creator._
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| [0] | address | An address indicating the creator |
+| [0] | address | An address indicating the creator. |
 
 ### creatorDoesWork
 

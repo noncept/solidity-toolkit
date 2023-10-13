@@ -1,7 +1,9 @@
-const { BN, expectEvent, expectRevert } = require('@openzeppelin/test-helpers');
+const { BN, expectEvent } = require('@openzeppelin/test-helpers');
 const { expect } = require('chai');
 
-const { shouldBehaveLikeTokenRecover } = require('eth-token-recover/test/TokenRecover.behaviour');
+const { expectRevertCustomError } = require('./helpers/customError');
+
+const { shouldBehaveLikeTokenRecover } = require('eth-token-recover/test/TokenRecover.behavior');
 
 const SampleContract = artifacts.require('$SampleContract');
 
@@ -35,9 +37,10 @@ contract('SampleContract', function ([creator, newOwner, anotherAccount]) {
 
     describe('if another account is calling', function () {
       it('reverts', async function () {
-        await expectRevert(
+        await expectRevertCustomError(
           this.contract.creatorDoesWork(value, { from: anotherAccount }),
-          'SampleContract: Caller is not the creator',
+          'SampleContractUnauthorizedAccount',
+          [anotherAccount],
         );
       });
     });
@@ -60,9 +63,10 @@ contract('SampleContract', function ([creator, newOwner, anotherAccount]) {
 
     describe('if another account is calling', function () {
       it('reverts', async function () {
-        await expectRevert(
+        await expectRevertCustomError(
           this.contract.ownerDoesWork(value, { from: anotherAccount }),
-          'Ownable: caller is not the owner',
+          'OwnableUnauthorizedAccount',
+          [anotherAccount],
         );
       });
     });
@@ -85,6 +89,6 @@ contract('SampleContract', function ([creator, newOwner, anotherAccount]) {
       this.instance = this.contract;
     });
 
-    shouldBehaveLikeTokenRecover([creator, anotherAccount]);
+    shouldBehaveLikeTokenRecover(creator, anotherAccount);
   });
 });

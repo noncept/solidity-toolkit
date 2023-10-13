@@ -5,7 +5,7 @@
 
 |  File Name  |  SHA-1 Hash  |
 |-------------|--------------|
-| dist/SampleContract.dist.sol | 762276e7c1046b3e4f62ca0a6d8eb4414da3a52d |
+| dist/SampleContract.dist.sol | 44f524c63f96bece5384ff81e1262890069b4950 |
 
 
 ### Contracts Description Table
@@ -36,10 +36,11 @@
 | └ | transferFrom | External ❗️ | 🛑  |NO❗️ |
 ||||||
 | **TokenRecover** | Implementation | Ownable |||
+| └ | <Constructor> | Public ❗️ | 🛑  | Ownable |
 | └ | recoverERC20 | Public ❗️ | 🛑  | onlyOwner |
 ||||||
 | **SampleContract** | Implementation | TokenRecover |||
-| └ | <Constructor> | Public ❗️ | 🛑  |NO❗️ |
+| └ | <Constructor> | Public ❗️ | 🛑  | TokenRecover |
 | └ | creator | Public ❗️ |   |NO❗️ |
 | └ | creatorDoesWork | Public ❗️ | 🛑  | onlyCreator |
 | └ | ownerDoesWork | Public ❗️ | 🛑  | onlyOwner |
