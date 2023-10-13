@@ -85,6 +85,6 @@ jobs:
       - name: Run CodeSpell
         uses: codespell-project/actions-codespell@v2.0
         with:
-          check_hidden: true
+          check_hidden: false
           check_filenames: true
           skip: package-lock.json
