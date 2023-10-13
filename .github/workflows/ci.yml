@@ -87,4 +87,4 @@ jobs:
         with:
           check_hidden: true
           check_filenames: true
-          skip: .git, package-lock.json
+          skip: .git,package-lock.json
