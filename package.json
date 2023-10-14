@@ -76,7 +76,7 @@
     "solhint-plugin-openzeppelin": "file:scripts/solhint-custom",
     "solidity-coverage": "^0.8.5",
     "solidity-docgen": "^0.6.0-beta.36",
-    "surya": "^0.4.6",
+    "surya": "^0.4.7",
     "truffle": "^5.11.5",
     "truffle-flattener": "^1.6.0",
     "yargs": "^17.7.2"
@@ -86,9 +86,6 @@
     "eth-token-recover": "5.0.0"
   },
   "overrides": {
-    "surya": {
-      "@solidity-parser/parser": "^0.16.1"
-    },
     "truffle-flattener": {
       "@solidity-parser/parser": "^0.16.1"
     }
