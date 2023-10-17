@@ -17,7 +17,9 @@ module.exports = {
     },
   },
   exposed: {
-    exclude: [],
+    imports: true,
+    initializers: true,
+    exclude: ['vendor/**/*'],
   },
   gasReporter: {
     enabled: true,
