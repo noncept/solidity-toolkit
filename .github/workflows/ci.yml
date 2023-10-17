@@ -81,6 +81,8 @@ jobs:
   codespell:
     name: Codespell
     runs-on: ubuntu-latest
+    env:
+      FORCE_COLOR: 1
     steps:
       - uses: actions/checkout@v4
       - name: Run CodeSpell
