@@ -16,7 +16,7 @@ A toolkit for Solidity Smart Contracts development.
 npm install
 ```
 
-## Usage (using Hardhat)
+## Usage
 
 Open the console
 
@@ -70,7 +70,11 @@ npm run docs
 
 ## Use web3 console in your browser (i.e. to use MetaMask)
 
-By default, it takes contracts compiled with Truffle.
+By default, it takes contracts compiled with Truffle using the following command.
+
+```bash
+npm run truffle:compile
+```
 
 To use Hardhat compiled contracts adjust `./build/contracts` with `./artifacts` files in `bs-config.json`
 
