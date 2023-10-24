@@ -27,7 +27,7 @@ module.exports = {
     showMethodSig: true,
   },
   docgen: {
-    outputDir: 'analysis/docs',
+    outputDir: 'docs',
     exclude: ['mocks'],
   },
 };
