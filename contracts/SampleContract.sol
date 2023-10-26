@@ -10,13 +10,8 @@ import {TokenRecover} from "eth-token-recover/contracts/TokenRecover.sol";
  * @author Vittorio Minacori
  */
 contract SampleContract is TokenRecover {
-    address private _creator;
-
-    /**
-     * @dev The caller account is not authorized to perform an operation.
-     * @param account The caller account.
-     */
-    error SampleContractUnauthorizedAccount(address account);
+    // store the manager address
+    address private immutable _manager;
 
     /**
      * @dev Emitted after a work done.
@@ -25,36 +20,43 @@ contract SampleContract is TokenRecover {
     event WorkDone(uint256 value);
 
     /**
-     * @dev Requires that sender is the contract creator.
+     * @dev The caller account is not authorized to perform an operation.
+     * @param account The caller account.
      */
-    modifier onlyCreator() {
-        if (creator() != _msgSender()) {
+    error SampleContractUnauthorizedAccount(address account);
+
+    /**
+     * @dev The manager is not a valid manager account. (eg. `address(0)`)
+     */
+    error SampleContractInvalidManager(address manager);
+
+    /**
+     * @dev Requires that sender is the contract manager.
+     */
+    modifier onlyManager() {
+        if (manager() != _msgSender()) {
             revert SampleContractUnauthorizedAccount(_msgSender());
         }
         _;
     }
 
     /**
-     * @dev Create a new contract assigning `_creator` to deployer.
+     * @dev Create a new contract assigning provided `manager` and assigning `owner` to deployer.
      */
-    constructor() TokenRecover(_msgSender()) {
-        _creator = _msgSender();
+    constructor(address manager_) TokenRecover(_msgSender()) {
+        if (manager_ == address(0)) {
+            revert SampleContractInvalidManager(manager_);
+        }
+
+        _manager = manager_;
     }
 
     /**
-     * @dev Return the contract creator.
-     * @return An address indicating the creator.
-     */
-    function creator() public view returns (address) {
-        return _creator;
-    }
-
-    /**
-     * @dev Does work for creator.
+     * @dev Does work for manager.
      * Emits a 'WorkDone' event.
      * @param value Just an amount to be emitted.
      */
-    function creatorDoesWork(uint256 value) public onlyCreator {
+    function managerDoesWork(uint256 value) external onlyManager {
         _internalWork(value);
     }
 
@@ -63,8 +65,16 @@ contract SampleContract is TokenRecover {
      * Emits a 'WorkDone' event.
      * @param value Just an amount to be emitted.
      */
-    function ownerDoesWork(uint256 value) public onlyOwner {
+    function ownerDoesWork(uint256 value) external onlyOwner {
         _internalWork(value);
+    }
+
+    /**
+     * @dev Return the contract manager.
+     * @return An address indicating the manager.
+     */
+    function manager() public view returns (address) {
+        return _manager;
     }
 
     /**

@@ -64,7 +64,7 @@
     "eth-sig-util": "^3.0.1",
     "ethereumjs-wallet": "^1.0.2",
     "graphlib": "^2.1.8",
-    "hardhat": "^2.18.2",
+    "hardhat": "^2.18.3",
     "hardhat-exposed": "^0.3.13",
     "hardhat-gas-reporter": "^1.0.9",
     "lite-server": "^2.6.1",
@@ -83,7 +83,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "5.0.0",
-    "eth-token-recover": "5.0.0"
+    "eth-token-recover": "6.0.0"
   },
   "overrides": {
     "truffle-flattener": {

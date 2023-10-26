@@ -4,20 +4,6 @@
 
 _Implementation of a Sample Contract_
 
-### SampleContractUnauthorizedAccount
-
-```solidity
-error SampleContractUnauthorizedAccount(address account)
-```
-
-_The caller account is not authorized to perform an operation._
-
-#### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| account | address | The caller account. |
-
 ### WorkDone
 
 ```solidity
@@ -32,43 +18,51 @@ _Emitted after a work done._
 | ---- | ---- | ----------- |
 | value | uint256 | An amount to be emitted. |
 
-### onlyCreator
+### SampleContractUnauthorizedAccount
 
 ```solidity
-modifier onlyCreator()
+error SampleContractUnauthorizedAccount(address account)
 ```
 
-_Requires that sender is the contract creator._
+_The caller account is not authorized to perform an operation._
+
+#### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| account | address | The caller account. |
+
+### SampleContractInvalidManager
+
+```solidity
+error SampleContractInvalidManager(address manager)
+```
+
+_The manager is not a valid manager account. (eg. `address(0)`)_
+
+### onlyManager
+
+```solidity
+modifier onlyManager()
+```
+
+_Requires that sender is the contract manager._
 
 ### constructor
 
 ```solidity
-constructor() public
+constructor(address manager_) public
 ```
 
-_Create a new contract assigning `_creator` to deployer._
+_Create a new contract assigning provided `manager` and assigning `owner` to deployer._
 
-### creator
+### managerDoesWork
 
 ```solidity
-function creator() public view returns (address)
+function managerDoesWork(uint256 value) external
 ```
 
-_Return the contract creator._
-
-#### Return Values
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| [0] | address | An address indicating the creator. |
-
-### creatorDoesWork
-
-```solidity
-function creatorDoesWork(uint256 value) public
-```
-
-_Does work for creator.
+_Does work for manager.
 Emits a 'WorkDone' event._
 
 #### Parameters
@@ -80,7 +74,7 @@ Emits a 'WorkDone' event._
 ### ownerDoesWork
 
 ```solidity
-function ownerDoesWork(uint256 value) public
+function ownerDoesWork(uint256 value) external
 ```
 
 _Does work for owner.
@@ -91,6 +85,20 @@ Emits a 'WorkDone' event._
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | value | uint256 | Just an amount to be emitted. |
+
+### manager
+
+```solidity
+function manager() public view returns (address)
+```
+
+_Return the contract manager._
+
+#### Return Values
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| [0] | address | An address indicating the manager. |
 
 ### _internalWork
 

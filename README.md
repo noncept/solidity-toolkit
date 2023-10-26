@@ -7,21 +7,12 @@
 
 A toolkit for Solidity Smart Contracts development.
 
-
 ## Development
 
 ### Install dependencies
 
 ```bash
 npm install
-```
-
-## Usage
-
-Open the console
-
-```bash
-npm run console
 ```
 
 ### Compile
@@ -42,7 +33,7 @@ npm test
 npm run coverage
 ```
 
-## Linter
+### Linter
 
 Check Solidity files
 

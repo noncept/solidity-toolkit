@@ -1,4 +1,4 @@
-// Sources flattened with hardhat v2.18.2 https://hardhat.org
+// Sources flattened with hardhat v2.18.3 https://hardhat.org
 
 // SPDX-License-Identifier: MIT
 
@@ -132,6 +132,172 @@ abstract contract Ownable is Context {
 }
 
 
+// File @openzeppelin/contracts/utils/introspection/IERC165.sol@v5.0.0
+
+// Original license: SPDX_License_Identifier: MIT
+// OpenZeppelin Contracts (last updated v5.0.0) (utils/introspection/IERC165.sol)
+
+pragma solidity ^0.8.20;
+
+/**
+ * @dev Interface of the ERC165 standard, as defined in the
+ * https://eips.ethereum.org/EIPS/eip-165[EIP].
+ *
+ * Implementers can declare support of contract interfaces, which can then be
+ * queried by others ({ERC165Checker}).
+ *
+ * For an implementation, see {ERC165}.
+ */
+interface IERC165 {
+    /**
+     * @dev Returns true if this contract implements the interface defined by
+     * `interfaceId`. See the corresponding
+     * https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section]
+     * to learn more about how these ids are created.
+     *
+     * This function call must use less than 30 000 gas.
+     */
+    function supportsInterface(bytes4 interfaceId) external view returns (bool);
+}
+
+
+// File @openzeppelin/contracts/token/ERC721/IERC721.sol@v5.0.0
+
+// Original license: SPDX_License_Identifier: MIT
+// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC721/IERC721.sol)
+
+pragma solidity ^0.8.20;
+
+/**
+ * @dev Required interface of an ERC721 compliant contract.
+ */
+interface IERC721 is IERC165 {
+    /**
+     * @dev Emitted when `tokenId` token is transferred from `from` to `to`.
+     */
+    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+
+    /**
+     * @dev Emitted when `owner` enables `approved` to manage the `tokenId` token.
+     */
+    event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
+
+    /**
+     * @dev Emitted when `owner` enables or disables (`approved`) `operator` to manage all of its assets.
+     */
+    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
+
+    /**
+     * @dev Returns the number of tokens in ``owner``'s account.
+     */
+    function balanceOf(address owner) external view returns (uint256 balance);
+
+    /**
+     * @dev Returns the owner of the `tokenId` token.
+     *
+     * Requirements:
+     *
+     * - `tokenId` must exist.
+     */
+    function ownerOf(uint256 tokenId) external view returns (address owner);
+
+    /**
+     * @dev Safely transfers `tokenId` token from `from` to `to`.
+     *
+     * Requirements:
+     *
+     * - `from` cannot be the zero address.
+     * - `to` cannot be the zero address.
+     * - `tokenId` token must exist and be owned by `from`.
+     * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+     * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+     *   a safe transfer.
+     *
+     * Emits a {Transfer} event.
+     */
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
+
+    /**
+     * @dev Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients
+     * are aware of the ERC721 protocol to prevent tokens from being forever locked.
+     *
+     * Requirements:
+     *
+     * - `from` cannot be the zero address.
+     * - `to` cannot be the zero address.
+     * - `tokenId` token must exist and be owned by `from`.
+     * - If the caller is not `from`, it must have been allowed to move this token by either {approve} or
+     *   {setApprovalForAll}.
+     * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+     *   a safe transfer.
+     *
+     * Emits a {Transfer} event.
+     */
+    function safeTransferFrom(address from, address to, uint256 tokenId) external;
+
+    /**
+     * @dev Transfers `tokenId` token from `from` to `to`.
+     *
+     * WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC721
+     * or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must
+     * understand this adds an external call which potentially creates a reentrancy vulnerability.
+     *
+     * Requirements:
+     *
+     * - `from` cannot be the zero address.
+     * - `to` cannot be the zero address.
+     * - `tokenId` token must be owned by `from`.
+     * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+     *
+     * Emits a {Transfer} event.
+     */
+    function transferFrom(address from, address to, uint256 tokenId) external;
+
+    /**
+     * @dev Gives permission to `to` to transfer `tokenId` token to another account.
+     * The approval is cleared when the token is transferred.
+     *
+     * Only a single account can be approved at a time, so approving the zero address clears previous approvals.
+     *
+     * Requirements:
+     *
+     * - The caller must own the token or be an approved operator.
+     * - `tokenId` must exist.
+     *
+     * Emits an {Approval} event.
+     */
+    function approve(address to, uint256 tokenId) external;
+
+    /**
+     * @dev Approve or remove `operator` as an operator for the caller.
+     * Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller.
+     *
+     * Requirements:
+     *
+     * - The `operator` cannot be the address zero.
+     *
+     * Emits an {ApprovalForAll} event.
+     */
+    function setApprovalForAll(address operator, bool approved) external;
+
+    /**
+     * @dev Returns the account approved for `tokenId` token.
+     *
+     * Requirements:
+     *
+     * - `tokenId` must exist.
+     */
+    function getApproved(uint256 tokenId) external view returns (address operator);
+
+    /**
+     * @dev Returns if the `operator` is allowed to manage all of the assets of `owner`.
+     *
+     * See {setApprovalForAll}
+     */
+    function isApprovedForAll(address owner, address operator) external view returns (bool);
+}
+
+
 // File @openzeppelin/contracts/token/ERC20/IERC20.sol@v5.0.0
 
 // Original license: SPDX_License_Identifier: MIT
@@ -215,7 +381,68 @@ interface IERC20 {
 }
 
 
-// File eth-token-recover/contracts/TokenRecover.sol@v5.0.0
+// File eth-token-recover/contracts/recover/RecoverERC20.sol@v6.0.0
+
+// Original license: SPDX_License_Identifier: MIT
+
+pragma solidity ^0.8.20;
+
+/**
+ * @title RecoverERC20
+ * @dev Allows to recover any ERC20 token sent into the contract and send them to a receiver.
+ */
+abstract contract RecoverERC20 {
+    /**
+     * @dev Recovers a `tokenAmount` of the ERC20 `tokenAddress` locked into this contract
+     * and sends them to the `tokenReceiver` address.
+     *
+     * WARNING: it allows everyone to recover tokens. Access controls MUST be defined in derived contracts.
+     *
+     * @param tokenAddress The contract address of the token to recover.
+     * @param tokenReceiver The address that will receive the recovered tokens.
+     * @param tokenAmount Number of tokens to be recovered.
+     */
+    function _recoverERC20(address tokenAddress, address tokenReceiver, uint256 tokenAmount) internal virtual {
+        // slither-disable-next-line unchecked-transfer
+        IERC20(tokenAddress).transfer(tokenReceiver, tokenAmount);
+    }
+}
+
+
+// File eth-token-recover/contracts/recover/RecoverERC721.sol@v6.0.0
+
+// Original license: SPDX_License_Identifier: MIT
+
+pragma solidity ^0.8.20;
+
+/**
+ * @title RecoverERC721
+ * @dev Allows to recover any ERC721 token sent into the contract and send them to a receiver.
+ */
+abstract contract RecoverERC721 {
+    /**
+     * @dev Recovers the `tokenId` of the ERC721 `tokenAddress` locked into this contract
+     * and sends it to the `tokenReceiver` address.
+     *
+     * WARNING: it allows everyone to recover tokens. Access controls MUST be defined in derived contracts.
+     *
+     * @param tokenAddress The contract address of the token to recover.
+     * @param tokenReceiver The address that will receive the recovered token.
+     * @param tokenId The identifier for the NFT to be recovered.
+     * @param data Additional data with no specified format.
+     */
+    function _recoverERC721(
+        address tokenAddress,
+        address tokenReceiver,
+        uint256 tokenId,
+        bytes memory data
+    ) internal virtual {
+        IERC721(tokenAddress).safeTransferFrom(address(this), tokenReceiver, tokenId, data);
+    }
+}
+
+
+// File eth-token-recover/contracts/TokenRecover.sol@v6.0.0
 
 // Original license: SPDX_License_Identifier: MIT
 
@@ -224,22 +451,46 @@ pragma solidity ^0.8.20;
 
 /**
  * @title TokenRecover
- * @dev Allows token owner to recover any ERC20 sent into the contract.
+ * @dev Allows the contract owner to recover any ERC20 or ERC721 token sent into the contract and send them to a receiver.
  */
-abstract contract TokenRecover is Ownable {
+abstract contract TokenRecover is Ownable, RecoverERC20, RecoverERC721 {
     /**
      * @dev Initializes the contract setting the address provided by the deployer as the initial owner.
      */
     constructor(address originalOwner) Ownable(originalOwner) {}
 
     /**
-     * @dev Recover ERC20 tokens stuck into this contract and send to owner address.
-     * @param tokenAddress The token contract address to recover.
+     * @dev Recovers a `tokenAmount` of the ERC20 `tokenAddress` locked into this contract
+     * and sends them to the `tokenReceiver` address.
+     *
+     * NOTE: restricting access to owner only. See `RecoverERC20::_recoverERC20`.
+     *
+     * @param tokenAddress The contract address of the token to recover.
+     * @param tokenReceiver The address that will receive the recovered tokens.
      * @param tokenAmount Number of tokens to be recovered.
      */
-    function recoverERC20(address tokenAddress, uint256 tokenAmount) public virtual onlyOwner {
-        // slither-disable-next-line unchecked-transfer
-        IERC20(tokenAddress).transfer(owner(), tokenAmount);
+    function recoverERC20(address tokenAddress, address tokenReceiver, uint256 tokenAmount) public virtual onlyOwner {
+        _recoverERC20(tokenAddress, tokenReceiver, tokenAmount);
+    }
+
+    /**
+     * @dev Recovers the `tokenId` of the ERC721 `tokenAddress` locked into this contract
+     * and sends it to the `tokenReceiver` address.
+     *
+     * NOTE: restricting access to owner only. See `RecoverERC721::_recoverERC721`.
+     *
+     * @param tokenAddress The contract address of the token to recover.
+     * @param tokenReceiver The address that will receive the recovered token.
+     * @param tokenId The identifier for the NFT to be recovered.
+     * @param data Additional data with no specified format.
+     */
+    function recoverERC721(
+        address tokenAddress,
+        address tokenReceiver,
+        uint256 tokenId,
+        bytes memory data
+    ) public virtual onlyOwner {
+        _recoverERC721(tokenAddress, tokenReceiver, tokenId, data);
     }
 }
 
@@ -256,13 +507,8 @@ pragma solidity ^0.8.20;
  * @author Vittorio Minacori
  */
 contract SampleContract is TokenRecover {
-    address private _creator;
-
-    /**
-     * @dev The caller account is not authorized to perform an operation.
-     * @param account The caller account.
-     */
-    error SampleContractUnauthorizedAccount(address account);
+    // store the manager address
+    address private immutable _manager;
 
     /**
      * @dev Emitted after a work done.
@@ -271,36 +517,43 @@ contract SampleContract is TokenRecover {
     event WorkDone(uint256 value);
 
     /**
-     * @dev Requires that sender is the contract creator.
+     * @dev The caller account is not authorized to perform an operation.
+     * @param account The caller account.
      */
-    modifier onlyCreator() {
-        if (creator() != _msgSender()) {
+    error SampleContractUnauthorizedAccount(address account);
+
+    /**
+     * @dev The manager is not a valid manager account. (eg. `address(0)`)
+     */
+    error SampleContractInvalidManager(address manager);
+
+    /**
+     * @dev Requires that sender is the contract manager.
+     */
+    modifier onlyManager() {
+        if (manager() != _msgSender()) {
             revert SampleContractUnauthorizedAccount(_msgSender());
         }
         _;
     }
 
     /**
-     * @dev Create a new contract assigning `_creator` to deployer.
+     * @dev Create a new contract assigning provided `manager` and assigning `owner` to deployer.
      */
-    constructor() TokenRecover(_msgSender()) {
-        _creator = _msgSender();
+    constructor(address manager_) TokenRecover(_msgSender()) {
+        if (manager_ == address(0)) {
+            revert SampleContractInvalidManager(manager_);
+        }
+
+        _manager = manager_;
     }
 
     /**
-     * @dev Return the contract creator.
-     * @return An address indicating the creator.
-     */
-    function creator() public view returns (address) {
-        return _creator;
-    }
-
-    /**
-     * @dev Does work for creator.
+     * @dev Does work for manager.
      * Emits a 'WorkDone' event.
      * @param value Just an amount to be emitted.
      */
-    function creatorDoesWork(uint256 value) public onlyCreator {
+    function managerDoesWork(uint256 value) external onlyManager {
         _internalWork(value);
     }
 
@@ -309,8 +562,16 @@ contract SampleContract is TokenRecover {
      * Emits a 'WorkDone' event.
      * @param value Just an amount to be emitted.
      */
-    function ownerDoesWork(uint256 value) public onlyOwner {
+    function ownerDoesWork(uint256 value) external onlyOwner {
         _internalWork(value);
+    }
+
+    /**
+     * @dev Return the contract manager.
+     * @return An address indicating the manager.
+     */
+    function manager() public view returns (address) {
+        return _manager;
     }
 
     /**
