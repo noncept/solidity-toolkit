@@ -381,7 +381,7 @@ interface IERC20 {
 }
 
 
-// File eth-token-recover/contracts/recover/RecoverERC20.sol@v6.0.0
+// File eth-token-recover/contracts/recover/RecoverERC20.sol@v6.1.0
 
 // Original license: SPDX_License_Identifier: MIT
 
@@ -409,7 +409,7 @@ abstract contract RecoverERC20 {
 }
 
 
-// File eth-token-recover/contracts/recover/RecoverERC721.sol@v6.0.0
+// File eth-token-recover/contracts/recover/RecoverERC721.sol@v6.1.0
 
 // Original license: SPDX_License_Identifier: MIT
 
@@ -442,7 +442,7 @@ abstract contract RecoverERC721 {
 }
 
 
-// File eth-token-recover/contracts/TokenRecover.sol@v6.0.0
+// File eth-token-recover/contracts/TokenRecover.sol@v6.1.0
 
 // Original license: SPDX_License_Identifier: MIT
 
@@ -457,7 +457,7 @@ abstract contract TokenRecover is Ownable, RecoverERC20, RecoverERC721 {
     /**
      * @dev Initializes the contract setting the address provided by the deployer as the initial owner.
      */
-    constructor(address originalOwner) Ownable(originalOwner) {}
+    constructor(address initialOwner) Ownable(initialOwner) {}
 
     /**
      * @dev Recovers a `tokenAmount` of the ERC20 `tokenAddress` locked into this contract
