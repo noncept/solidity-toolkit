@@ -1,13 +1,13 @@
 require('@nomiclabs/hardhat-truffle5');
-require('solidity-coverage');
-require('solidity-docgen');
 require('hardhat-exposed');
 require('hardhat-gas-reporter');
+require('solidity-coverage');
+require('solidity-docgen');
 
 module.exports = {
   defaultNetwork: 'hardhat',
   solidity: {
-    version: '0.8.22',
+    version: '0.8.23',
     settings: {
       evmVersion: 'shanghai',
       optimizer: {
@@ -16,18 +16,16 @@ module.exports = {
       },
     },
   },
+  docgen: {
+    outputDir: 'docs',
+    exclude: ['mocks', 'examples'],
+  },
   exposed: {
-    imports: true,
-    initializers: true,
-    exclude: ['vendor/**/*'],
+    exclude: [],
   },
   gasReporter: {
     enabled: true,
-    excludeContracts: ['mocks', '@openzeppelin/contracts'],
+    excludeContracts: ['mocks', 'examples', '@openzeppelin/contracts'],
     showMethodSig: true,
-  },
-  docgen: {
-    outputDir: 'docs',
-    exclude: ['mocks'],
   },
 };
