@@ -74,7 +74,7 @@
     "sol2uml": "^2.5.20",
     "solhint": "^4.1.1",
     "solhint-plugin-openzeppelin": "file:scripts/solhint-custom",
-    "solidity-coverage": "^0.8.5",
+    "solidity-coverage": "^0.8.6",
     "solidity-docgen": "^0.6.0-beta.36",
     "surya": "^0.4.11",
     "truffle": "^5.11.5",
@@ -87,7 +87,7 @@
   },
   "overrides": {
     "truffle-flattener": {
-      "@solidity-parser/parser": "^0.16.1"
+      "@solidity-parser/parser": "^0.18.0"
     }
   }
 }
