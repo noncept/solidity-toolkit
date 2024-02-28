@@ -77,8 +77,6 @@ jobs:
 
       - name: Run Slither
         uses: crytic/slither-action@v0.3.0
-        with:
-          node-version: 18
 
   codespell:
     name: Codespell
