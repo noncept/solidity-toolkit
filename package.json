@@ -14,7 +14,6 @@
   ],
   "scripts": {
     "dev": "lite-server",
-    "docs": "hardhat docgen",
     "truffle:compile": "truffle compile --all",
     "hardhat:console": "hardhat console",
     "hardhat:compile": "hardhat compile",
@@ -29,12 +28,16 @@
     "check:inheritance": "scripts/checks/inheritance-ordering.js artifacts/build-info/*",
     "lint": "npm run lint:js && npm run lint:sol",
     "lint:fix": "npm run lint:js:fix && npm run lint:sol:fix",
-    "lint:js": "prettier --log-level warn --ignore-path .gitignore '**/*.{js,ts}' --check && eslint --ignore-path .gitignore .",
-    "lint:js:fix": "prettier --log-level warn --ignore-path .gitignore '**/*.{js,ts}' --write && eslint --ignore-path .gitignore . --fix",
+    "lint:js": "prettier --log-level warn --ignore-path .gitignore '**/*.{js,mjs,ts}' --check && eslint --ignore-path .gitignore .",
+    "lint:js:fix": "prettier --log-level warn --ignore-path .gitignore '**/*.{js,mjs,ts}' --write && eslint --ignore-path .gitignore . --fix",
     "lint:sol": "prettier --log-level warn --ignore-path .gitignore '{contracts,test}/**/*.sol' --check && solhint '{contracts,test}/**/*.sol'",
     "lint:sol:fix": "prettier --log-level warn --ignore-path .gitignore '{contracts,test}/**/*.sol' --write",
     "flat": "scripts/flat.sh",
-    "analyze": "scripts/analyze.sh"
+    "analyze": "scripts/analyze.sh",
+    "docs": "hardhat docgen",
+    "pages:dev": "vitepress dev pages",
+    "pages:build": "vitepress build pages",
+    "pages:deploy": "vitepress build pages && sh pages/deploy/deploy.sh"
   },
   "repository": {
     "type": "git",
@@ -79,6 +82,7 @@
     "surya": "^0.4.11",
     "truffle": "^5.11.5",
     "truffle-flattener": "^1.6.0",
+    "vitepress": "^1.0.0-rc.44",
     "yargs": "^17.7.2"
   },
   "dependencies": {
