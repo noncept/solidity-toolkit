@@ -67,7 +67,7 @@
     "eth-sig-util": "^3.0.1",
     "ethereumjs-wallet": "^1.0.2",
     "graphlib": "^2.1.8",
-    "hardhat": "^2.20.1",
+    "hardhat": "^2.21.0",
     "hardhat-exposed": "^0.3.14",
     "hardhat-gas-reporter": "^1.0.10",
     "lite-server": "^2.6.1",
