@@ -1,4 +1,4 @@
-// Sources flattened with hardhat v2.21.0 https://hardhat.org
+// Sources flattened with hardhat v2.22.2 https://hardhat.org
 
 // SPDX-License-Identifier: MIT
 
@@ -385,7 +385,7 @@ interface IERC20 {
 }
 
 
-// File eth-token-recover/contracts/recover/RecoverERC20.sol@v6.2.0
+// File eth-token-recover/contracts/recover/RecoverERC20.sol@v6.3.0
 
 // Original license: SPDX_License_Identifier: MIT
 
@@ -413,7 +413,7 @@ abstract contract RecoverERC20 {
 }
 
 
-// File eth-token-recover/contracts/recover/RecoverERC721.sol@v6.2.0
+// File eth-token-recover/contracts/recover/RecoverERC721.sol@v6.3.0
 
 // Original license: SPDX_License_Identifier: MIT
 
@@ -446,7 +446,7 @@ abstract contract RecoverERC721 {
 }
 
 
-// File eth-token-recover/contracts/TokenRecover.sol@v6.2.0
+// File eth-token-recover/contracts/TokenRecover.sol@v6.3.0
 
 // Original license: SPDX_License_Identifier: MIT
 
