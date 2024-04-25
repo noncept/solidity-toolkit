@@ -2,7 +2,7 @@
   "server": {
     "baseDir": [
       "./web-console",
-      "./build/contracts",
+      "./artifacts/contracts",
       "./node_modules/web3/dist"
     ]
   }

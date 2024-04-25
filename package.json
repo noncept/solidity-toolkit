@@ -14,15 +14,10 @@
   ],
   "scripts": {
     "dev": "lite-server",
-    "truffle:compile": "truffle compile --all",
-    "hardhat:console": "hardhat console",
-    "hardhat:compile": "hardhat compile",
-    "hardhat:test": "hardhat test",
-    "hardhat:coverage": "env COVERAGE=true hardhat coverage",
-    "console": "npm run hardhat:console",
-    "compile": "npm run hardhat:compile",
-    "test": "npm run hardhat:test",
-    "coverage": "npm run hardhat:coverage",
+    "console": "hardhat console",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "coverage": "hardhat coverage",
     "clean": "hardhat clean && rimraf build contracts/build coverage coverage.json",
     "profile": "npm run clean && npm run coverage && open coverage/index.html",
     "check:inheritance": "scripts/checks/inheritance-ordering.js artifacts/build-info/*",
@@ -67,7 +62,7 @@
     "eth-sig-util": "^3.0.1",
     "ethereumjs-wallet": "^1.0.2",
     "graphlib": "^2.1.8",
-    "hardhat": "^2.22.2",
+    "hardhat": "^2.22.3",
     "hardhat-exposed": "^0.3.15",
     "hardhat-gas-reporter": "^2.1.1",
     "lite-server": "^2.6.1",
@@ -75,23 +70,16 @@
     "prettier-plugin-solidity": "^1.3.1",
     "rimraf": "^5.0.5",
     "sol2uml": "^2.5.20",
-    "solhint": "^4.5.2",
+    "solhint": "^4.5.4",
     "solhint-plugin-openzeppelin": "file:scripts/solhint-custom",
     "solidity-coverage": "^0.8.12",
     "solidity-docgen": "^0.6.0-beta.36",
     "surya": "^0.4.11",
-    "truffle": "^5.11.5",
-    "truffle-flattener": "^1.6.0",
-    "vitepress": "^1.0.2",
+    "vitepress": "^1.1.3",
     "yargs": "^17.7.2"
   },
   "dependencies": {
     "@openzeppelin/contracts": "5.0.2",
     "eth-token-recover": "6.3.0"
-  },
-  "overrides": {
-    "truffle-flattener": {
-      "@solidity-parser/parser": "^0.18.0"
-    }
   }
 }
