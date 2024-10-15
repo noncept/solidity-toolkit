@@ -5,7 +5,7 @@
 
 |  File Name  |  SHA-1 Hash  |
 |-------------|--------------|
-| dist/SampleContract.dist.sol | [object Promise] |
+| dist/SampleContract.dist.sol | 199a7fa75f0719a5f45be6077a295f7400a9aa8a |
 
 
 ### Contracts Description Table
