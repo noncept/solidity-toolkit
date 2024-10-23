@@ -62,7 +62,7 @@
     "eth-sig-util": "^3.0.1",
     "ethereumjs-wallet": "^1.0.2",
     "graphlib": "^2.1.8",
-    "hardhat": "^2.22.13",
+    "hardhat": "^2.22.14",
     "hardhat-exposed": "^0.3.15",
     "hardhat-gas-reporter": "^2.2.1",
     "lite-server": "^2.6.1",
@@ -79,7 +79,7 @@
     "yargs": "^17.7.2"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "5.0.2",
-    "eth-token-recover": "6.3.0"
+    "@openzeppelin/contracts": "5.1.0",
+    "eth-token-recover": "6.4.0"
   }
 }
