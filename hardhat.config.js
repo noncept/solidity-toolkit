@@ -21,11 +21,14 @@ module.exports = {
     exclude: ['mocks', 'examples'],
   },
   exposed: {
-    exclude: [],
+    imports: false,
+    initializers: true,
+    exclude: ['vendor/**/*'],
   },
   gasReporter: {
     enabled: true,
     excludeContracts: ['mocks', 'examples', '@openzeppelin/contracts'],
     showMethodSig: true,
+    trackGasDeltas: true,
   },
 };

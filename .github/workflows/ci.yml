@@ -17,7 +17,7 @@ jobs:
       FORCE_COLOR: 1
     steps:
       - name: Setup Code
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4
         
       - name: Setup Environment
         uses: ./.github/actions/setup
@@ -32,14 +32,14 @@ jobs:
       FORCE_COLOR: 1
     steps:
       - name: Setup Code
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4
 
       - name: Setup Environment
         uses: ./.github/actions/setup
 
       - name: Run Test
         run: npm test
-        
+
       - name: Check Linearisation
         run: npm run check:inheritance
 
@@ -50,7 +50,7 @@ jobs:
       FORCE_COLOR: 1
     steps:
       - name: Setup Code
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4
 
       - name: Setup Environment
         uses: ./.github/actions/setup
@@ -59,7 +59,7 @@ jobs:
         run: npm run coverage
         
       - name: Post to Codecov
-        uses: codecov/codecov-action@v4.5.0
+        uses: codecov/codecov-action@v5
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
@@ -70,7 +70,7 @@ jobs:
       FORCE_COLOR: 1
     steps:
       - name: Setup Code
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4
 
       - name: Setup Environment
         uses: ./.github/actions/setup
@@ -78,7 +78,8 @@ jobs:
       - name: Run Slither
         uses: crytic/slither-action@v0.4.0
         with:
-          node-version: 20
+          node-version: 22
+          solc-version: 0.8.28
 
   codespell:
     name: Codespell
@@ -87,10 +88,10 @@ jobs:
       FORCE_COLOR: 1
     steps:
       - name: Setup Code
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4
 
       - name: Run CodeSpell
-        uses: codespell-project/actions-codespell@v2.0
+        uses: codespell-project/actions-codespell@v2
         with:
           check_hidden: true
           check_filenames: true
