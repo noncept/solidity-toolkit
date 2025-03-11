@@ -1,6 +1,6 @@
 # Solidity Toolkit
 
-[![CI](https://github.com/noncept/solidity-toolkit/workflows/CI/badge.svg?branch=master)](https://github.com/noncept/solidity-toolkit/actions/)
+[![CI](https://github.com/noncept/solidity-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/noncept/solidity-toolkit/actions/workflows/ci.yml)
 [![Coverage Status](https://codecov.io/gh/noncept/solidity-toolkit/graph/badge.svg)](https://codecov.io/gh/noncept/solidity-toolkit)
 [![MIT licensed](https://img.shields.io/github/license/noncept/solidity-toolkit.svg)](https://github.com/noncept/solidity-toolkit/blob/master/LICENSE)
 
