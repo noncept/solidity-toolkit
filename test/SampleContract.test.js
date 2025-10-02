@@ -1,8 +1,6 @@
 const { BN, constants, expectEvent } = require('@openzeppelin/test-helpers');
 const { expectRevertCustomError } = require('./helpers/customError');
 
-const { expect } = require('chai');
-
 const { shouldBehaveLikeTokenRecover } = require('eth-token-recover/test/TokenRecover.behavior');
 
 const SampleContract = artifacts.require('$SampleContract');

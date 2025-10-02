@@ -385,7 +385,7 @@ interface IERC20 {
 }
 
 
-// File eth-token-recover/contracts/recover/RecoverERC20.sol@v6.5.0
+// File eth-token-recover/contracts/recover/RecoverERC20.sol@v6.9.0
 
 // Original license: SPDX_License_Identifier: MIT
 
@@ -413,7 +413,7 @@ abstract contract RecoverERC20 {
 }
 
 
-// File eth-token-recover/contracts/recover/RecoverERC721.sol@v6.5.0
+// File eth-token-recover/contracts/recover/RecoverERC721.sol@v6.9.0
 
 // Original license: SPDX_License_Identifier: MIT
 
@@ -446,7 +446,7 @@ abstract contract RecoverERC721 {
 }
 
 
-// File eth-token-recover/contracts/TokenRecover.sol@v6.5.0
+// File eth-token-recover/contracts/TokenRecover.sol@v6.9.0
 
 // Original license: SPDX_License_Identifier: MIT
 
