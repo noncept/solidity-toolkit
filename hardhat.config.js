@@ -1,5 +1,6 @@
 require('@nomicfoundation/hardhat-chai-matchers');
 require('@nomiclabs/hardhat-truffle5');
+require('@nomicfoundation/hardhat-foundry');
 require('hardhat-exposed');
 require('hardhat-gas-reporter');
 require('solidity-coverage');
@@ -22,9 +23,7 @@ module.exports = {
     exclude: ['mocks', 'examples'],
   },
   exposed: {
-    imports: false,
-    initializers: true,
-    exclude: ['vendor/**/*'],
+    exclude: [],
   },
   gasReporter: {
     enabled: true,

@@ -115,3 +115,11 @@ Emits a 'WorkDone' event._
 | ---- | ---- | ----------- |
 | value | uint256 | Just an amount to be emitted. |
 
+### _onlyManager
+
+```solidity
+function _onlyManager() internal view
+```
+
+_Throws if the sender is not the contract manager._
+

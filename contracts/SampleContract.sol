@@ -34,9 +34,7 @@ contract SampleContract is TokenRecover {
      * @dev Requires that sender is the contract manager.
      */
     modifier onlyManager() {
-        if (manager() != _msgSender()) {
-            revert SampleContractUnauthorizedAccount(_msgSender());
-        }
+        _onlyManager();
         _;
     }
 
@@ -84,5 +82,14 @@ contract SampleContract is TokenRecover {
      */
     function _internalWork(uint256 value) internal {
         emit WorkDone(value);
+    }
+
+    /**
+     * @dev Throws if the sender is not the contract manager.
+     */
+    function _onlyManager() internal view {
+        if (manager() != _msgSender()) {
+            revert SampleContractUnauthorizedAccount(_msgSender());
+        }
     }
 }
