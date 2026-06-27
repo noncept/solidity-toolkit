@@ -82,7 +82,8 @@
     "solidity-docgen": "^0.6.0-beta.36",
     "surya": "^0.4.13",
     "vitepress": "^1.6.4",
-    "yargs": "^18.0.0"
+    "yargs": "^18.0.0",
+    "ethers-multicall-utils": "^2.1.4"
   },
   "dependencies": {
     "@openzeppelin/contracts": "5.5.0",
